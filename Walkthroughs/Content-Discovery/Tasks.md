@@ -25,8 +25,6 @@
 ### In your terminal type `curl http://MACHINE_IP -v`
 <img width="1920" height="922" alt="Xflag" src="https://github.com/user-attachments/assets/42a14b47-c9a1-4e66-9925-58b4c4e15bdb" />  
 
-### Answer- THM{HEADER_FLAG}  
-
 ---
 ### **Then scroll to the bottom of this output and you can find the framework link**
 <img width="1920" height="922" alt="framework-link" src="https://github.com/user-attachments/assets/8f912260-72de-43f9-8af1-7ea139cab7a8" />
@@ -41,7 +39,7 @@
 <img width="1920" height="922" alt="login-page" src="https://github.com/user-attachments/assets/6c18411e-213e-4df5-bd8e-8ae6f25d8d9f" />  
 
 ### Enter the credentials and you'll get the flag
-### Answer- THM{CHANGE_DEFAULT_CREDENTIALS}
+
 
 
 
