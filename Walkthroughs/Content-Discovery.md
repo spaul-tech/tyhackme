@@ -40,9 +40,45 @@
 
 ### Enter the credentials and you'll get the flag
 
+---
+# 🔷 **Task 4 : OSINT - Search engines & web tools**
+
+Q. What Google dork operator limits results to a specific site?    
+Answer- `site:`
+
+Q. What online tool and browser extension identifies what technologies a website is running?  
+Answer- Wappalyzer
+
+# 🔷 **Task 5 : OSINT - Repositories & archives**  
+
+Q. What is the website address for the Wayback Machine?  
+Answer- `https://web.archive.org/`
+
+Q. What URL format do Amazon S3 buckets end in? (Answer starts with a .)  
+Answer- `.s3.amazonaws.com`
 
 
+# 🔷 **Task 6 : Automated discovery - Gobuster fundamentals** 
 
+Q. What is the name of the directory beginning with /mo that was discovered?  
+Answer- /monthly
+
+Q. What is the name of the log file that was discovered?  
+Answer- /development.log
+
+
+# 🔷 **Task 7 : Automated discovery - Subdomains & virtual hosts** 
+
+Q. Apart from dns and `-w`, which shorthand flag is required for dns mode?  
+Answer- `-d`
+
+Q. How many virtual hosts on acmeitsupport.thm respond with status code 200?  
+```bash
+gobuster vhost -u "http://MACHINE_IP" --domain acmeitsupport.thm -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt --append-domain --exclude-length 250-320
+```
+Type the above command to get the results  
+
+Answer- 3
 
 
 
