@@ -123,11 +123,39 @@ hydra -l jose -P /usr/share/wordlists/rockyou.txt lookup.thm http-post-form "/lo
 ### And finally got a meterpreter session , and got a shell . Then found the user.txt file but said permission denied , this means we need to login through other username . Then by searching for suid permission files by `find / -perm /4000 2>/dev/null` and got a interesting file `/usr/sbin/pwn` .
 <img width="1920" height="839" alt="suid" src="https://github.com/user-attachments/assets/c11ae4b2-84b4-483a-811a-328cf0af688c" />
 
+### After running the suid file , got a ID , this means inside it the code is running to show the ID name .
+<img width="1920" height="176" alt="tmp-path" src="https://github.com/user-attachments/assets/6c64ec60-43d0-4701-86b6-00f81335e52a" />
 
+### So now craeted a own path in `/tmp` to write a new reverse code for it to know the ID for `think` , as we earlier saw that username .
 
+<img width="1920" height="304" alt="think-id" src="https://github.com/user-attachments/assets/28607188-299c-4b21-bdfd-cd3019b6e5ef" />
 
+### Write this to insert into thr id file (this file will automatically be created)  .
+```bash
+echo '#!/bin/bash'> /tmp/id
+```  
+### Then insert this , this is where actual thing happens .
+```bash
+echo 'echo "uid=33(think) gid=33(think) groups (think)" >> /tmp/id
+```
+### Now run  `/usr/sbin/pwn` again and see you will get the think user and a list of passwords , now copy all passwords and make a different file locally in other terminal . 
+### Now we are going to use hydra with the password file we made now and get correct password for think .
+<img width="1920" height="291" alt="think-pwd" src="https://github.com/user-attachments/assets/83f1a71b-2080-440b-96ca-e99afc2a1159" />
 
+### - In my below image the password list I made is the `pwd.txt` .
+### - Now do ssh and get in with the credentials .
+### - After getting in you can get your flag by `cat user.txt` .
 
+<img width="1920" height="507" alt="exec-perm" src="https://github.com/user-attachments/assets/c7f2ca6f-8c51-479b-af78-855c81516870" />
+
+### Now I searched for executable permissions by `sudo -l` and saw think can run `/usr/bin/look` .
+### Serached GTFOBins and saw we can run it by the method I've shown in the SS , or you can do it more directly by ,
+```bash
+look '' "/root/.ssh/id_rsa" 
+```
+### And you will the rsa key , copy the full output and make a file locally and paste it there so we can ssh for getting root .
+### Now type `chmod 600 <filename>` .
+### Now type `ssh root@lookup.thm -i <filename>` and press enter, and get the root flag by `cat root.txt` .
 
 
 
